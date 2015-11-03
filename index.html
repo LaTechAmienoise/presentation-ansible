@@ -47,6 +47,9 @@
   <p>
     <small><a href="http://www.opencsi.com/">Bruno Bonfils</a> / <a href="http://twitter.com/bbonfils">@bbonfils</a></small>
   </p>
+  <p>
+    <small> Sébastien Elet / <a href="http://twitter.com/SebastienElet">@SebastienElet</a></small>
+  </p>
 </section>
 
 <section>
@@ -63,7 +66,6 @@
   <ul>
     <li> Devops depuis ~2007 </li>
     <li> Développeur Javascript full stack @<a href="http://www.simplifield.com">simplifield</a></li>
-    <li> Twitter <a href="http://twitter.com/SebastienElet">@SebastienElet</a></li>
     <li> Github <a href="http://github.com/SebastienElet">@SebastienElet</a></li>
   </ul>
 </section>
@@ -240,12 +242,61 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
       <li>Learning curve</li>
       <li>Aucune installation nécessaire sur les serveurs</li>
       <li>Documentation simple et compléte</li>
+      <li>Modules disponibles (npm/bower/composer...)</li>
       <li>Nombreux roles disponibles (ansible galaxy/github)</li>
       <li>Configuration en YAML humainement comprehensible</li>
     </ul>
   </section>
 </section>
 
+<section>
+  <section>
+    <h2>Bien débuter</h2>
+    <ul>
+      <li>Connaitre SSH</li>
+      <li>Savoir utiliser une clé SSH</li>
+      <li>Lire le <a href="http://docs.ansible.com/ansible/intro_getting_started.html">quick start</a></li>
+      <li>Écrire vos propres rôles</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Lecture</h2>
+    <ul>
+      <li><a href="https://github.com/henrysher/fedora-infra-ansible">Infastructure fedoraproject</a></li>
+      <li><a href="https://github.com/okfn/infra/tree/master/ansible">Infrastructure Open Knowledge</a></li>
+      <li><a href="https://github.com/haskell-infra/ansible">Infrastructure Haskell.org</a></li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Bonnes pratiques</h2>
+  </section>
+  <section>
+    <h2>Idempotence !</h2>
+    <ul>
+      <li>Évitez au maximum les taches en changed/skipped !</li>
+      <li>Évitez l'utilisation du module `shell` et `command`</li>
+      <li>Spécifiez la version/tag sur vos repos</li>
+      <li>Restez simple !</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Merci !</h2>
+    <h3>Des questions ?</h3>
+    <p>Les slides sont disponibles sur le github de la tech amienoise</p>
+    <p>
+      <a href="https://github.com/LaTechAmienoise/presentation-ansible">
+        https://github.com/LaTechAmienoise/presentation-ansible</a>
+      </a>
+    </p>
+  </section>
+</section>
 
         <!-- Example of nested vertical slides -->
         <section>
