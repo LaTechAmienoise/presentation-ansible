@@ -157,7 +157,7 @@ mysql -u root -p$ROOT_PASSWORD -e 'FLUSH PRIVILEGES;'
 
 <section>
   <section>
-    <h2>Mais que se passe t'il si je rejoute le script avec les mêmes arguments ?</h2>
+    <h2>Mais que se passe t'il si je rejoue le script avec les mêmes arguments ?</h2>
   </section>
   <section>
     <pre>
@@ -175,7 +175,7 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
     <ol>
       <li> Vérifiez si la base de données existe </li>
       <li> Vérifiez si l'utilisateur existe </li>
-      <li> Vérifiez si l'utilisateur à bien les droits attendu </li>
+      <li> Vérifiez si l'utilisateur dispose des droits attendus </li>
       <li> Et finalement, si 2 ou 3 est faux, exécuter <pre>FLUSH PRIVILEGES;</pre></li>
     </ol>
   </section>
@@ -187,7 +187,7 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
     <h3>Mais, dans le cas de scripts</h3>
     <ul>
       <li> Cela est (très) fastidieux </li> 
-      <li> Demande énormement de tests </li>
+      <li> Demande énormément de tests </li>
       <li> Difficile de prévoir tous les cas à l'avance </li>
     </ul>
   </section>
@@ -229,10 +229,10 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
     <p>
       Chef ops et puppet sont principalement en mode client/serveur
     </p>
-    <h3>Les inconveniants</h3>
+    <h3>Les inconvénients</h3>
     <ul>
       <li>Learning curve</li>
-      <li>Compléxité</li>
+      <li>Complexité</li>
     </ul>
   </section>
 
@@ -241,10 +241,10 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
     <ul>
       <li>Learning curve</li>
       <li>Aucune installation nécessaire sur les serveurs</li>
-      <li>Documentation simple et compléte</li>
+      <li>Documentation simple et complète</li>
       <li>Modules disponibles (npm/bower/composer...)</li>
-      <li>Nombreux roles disponibles (ansible galaxy/github)</li>
-      <li>Configuration en YAML humainement comprehensible</li>
+      <li>Nombreux rôles disponibles (ansible galaxy/github)</li>
+      <li>Configuration en YAML humainement compréhensible</li>
     </ul>
   </section>
 </section>
@@ -263,7 +263,7 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
   <section>
     <h2>Lecture</h2>
     <ul>
-      <li><a href="https://github.com/henrysher/fedora-infra-ansible">Infastructure fedoraproject</a></li>
+      <li><a href="https://github.com/henrysher/fedora-infra-ansible">Infrastructure fedoraproject</a></li>
       <li><a href="https://github.com/okfn/infra/tree/master/ansible">Infrastructure Open Knowledge</a></li>
       <li><a href="https://github.com/haskell-infra/ansible">Infrastructure Haskell.org</a></li>
     </ul>
