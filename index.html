@@ -41,76 +41,82 @@
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
 
-        <section>
-          <h1>Ansible</h1>
-          <h3>La Tech Amiénoise</h3>
-          <p>
-            <small><a href="http://www.opencsi.com/">Bruno Bonfils</a> / <a href="http://twitter.com/bbonfils">@bbonfils</a></small>
-          </p>
-        </section>
-
-        <section>
-          <h2>$ finger asyd</h2>
-          <ul>
-            <li> Administrateur système depuis ~2000 </li>
-            <li> Architecte OpenSource</li>
-            <li> Consultant gestion d'identité (SSO, PKI) </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>$ finger Sébastien Elet</h2>
-          <ul>
-            <li> Devops depuis ~2007 </li>
-            <li> Développeur Javascript full stack @<a href="http://www.simplifield.com">simplifield</a></li>
-            <li> Twitter <a href="http://twitter.com/SebastienElet">@SebastienElet</a></li>
-            <li> Github <a href="http://github.com/SebastienElet">@SebastienElet</a></li>
-          </ul>
-        </section>
+<section>
+  <h1>Ansible</h1>
+  <h3>La Tech Amiénoise</h3>
+  <p>
+    <small><a href="http://www.opencsi.com/">Bruno Bonfils</a> / <a href="http://twitter.com/bbonfils">@bbonfils</a></small>
+  </p>
+</section>
 
 <section>
- <h2>Introduction</h2>
- <p>Ansible est un logiciel de gestion de configuration, il s'adresse principalement&nbsp;:</P>
- <ul>
-  <li> aux administrateurs systèmes </li>
-  <li> aux développeurs </li>
-  <li> et à tout ceux qui font (souvent ?) du SSH</li>
+  <h2>$ finger asyd</h2>
+  <ul>
+    <li> Administrateur système depuis ~2000 </li>
+    <li> Architecte OpenSource</li>
+    <li> Consultant gestion d'identité (SSO, PKI) </li>
   </ul>
 </section>
+
 <section>
- <h2>Cas d'usage</h2>
- <p>Installation d'un Wordpress, donc de&nbsp;:</p>
- <ul>
-  <li> MySQL serveur</li>
-  <li> Apache 2 + PHP5 (en mode FPM)</li>
-  <li> Et finalement Wordpress (à partir de Git) </li>
- </ul>
+  <h2>$ finger Sébastien Elet</h2>
+  <ul>
+    <li> Devops depuis ~2007 </li>
+    <li> Développeur Javascript full stack @<a href="http://www.simplifield.com">simplifield</a></li>
+    <li> Twitter <a href="http://twitter.com/SebastienElet">@SebastienElet</a></li>
+    <li> Github <a href="http://github.com/SebastienElet">@SebastienElet</a></li>
+  </ul>
 </section>
+
+<section>
+  <h2>Introduction</h2>
+  <p>Ansible est un logiciel de gestion de configuration, il s'adresse principalement&nbsp;:</P>
+  <ul>
+    <li> aux administrateurs systèmes </li>
+    <li> aux développeurs </li>
+    <li> et à tout ceux qui font (souvent ?) du SSH</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Cas d'usage</h2>
+  <p>Installation d'un Wordpress, donc de&nbsp;:</p>
+  <ul>
+    <li> MySQL serveur</li>
+    <li> Apache 2 + PHP5 (en mode FPM)</li>
+    <li> Et finalement Wordpress (à partir de Git) </li>
+  </ul>
+</section>
+
 <section
- <h3>Commençons par un peu d'histoire...</h3>
- <h4>Il était une fois, dans un monde pas si lointain, les machines virtuelles n'existaient pas, on installait et gérait les serveurs à la main.. </h4>
+  <h3>Commençons par un peu d'histoire...</h3>
+  <h4>Il était une fois, dans un monde pas si lointain, les machines virtuelles n'existaient pas, on installait et gérait les serveurs à la main.. </h4>
 </section>
+
 <section>
-<h2>La vie d'un serveur, c'est</h2>
-<ul>
-<li> Installation initiale</li>
-<li> Installation des paquets de base</li>
-<li> Configuration des services de base (par exemple le mail)</li>
-</ul>
-<p>Le résultat est ce que l'on appelle traditionnellement le socle.</p>
+  <h2>La vie d'un serveur, c'est</h2>
+  <ul>
+    <li> Installation initiale</li>
+    <li> Installation des paquets de base</li>
+    <li> Configuration des services de base (par exemple le mail)</li>
+  </ul>
+  <p>Le résultat est ce que l'on appelle traditionnellement le socle.</p>
 </section>
+
 <section>
-<p>
-Mais l'objectif d'un serveur est avant tout d'héberger des applications, qu'il faut donc installer et faire vivre !
-</p>
-<ul>
-<li> Installation de l'application </li>
-<li> Des éventuelles dépendances systèmes (par exemple mysql serveur) et la configuration associée</li>
-<li> Configuration de l'application (au hasard identifiant pour accès à la base de données)</li>
-</ul>
+  <p>
+    Mais l'objectif d'un serveur est avant tout d'héberger des applications, 
+    qu'il faut donc installer et faire vivre !
+  </p>
+  <ul>
+    <li> Installation de l'application </li>
+    <li> Des éventuelles dépendances systèmes (par exemple mysql serveur) et la configuration associée</li>
+    <li> Configuration de l'application (au hasard identifiant pour accès à la base de données)</li>
+  </ul>
 </section>
+
 <section>
-<h2>Dans la vie réelle</h2>
+  <h2>Dans la vie réelle</h2>
 </Section>
 
 <section>
@@ -119,18 +125,19 @@ Mais l'objectif d'un serveur est avant tout d'héberger des applications, qu'il 
 </section>
 
 <section>
-<h2>En pratique</h2>
-<p>Les administrateurs écrivent des scripts qui&nbsp;:</p>
-<ul>
-<li>installe des paquets</li>
-<li>modifie et crée des fichiers</li>
-<li>exécute des commandes diverses et variées</li>
+  <h2>En pratique</h2>
+  <p>Les administrateurs écrivent des scripts qui&nbsp;:</p>
+  <ul>
+    <li>installe des paquets</li>
+    <li>modifie et crée des fichiers</li>
+    <li>exécute des commandes diverses et variées</li>
+  </ul>
 </section>
 
 <section>
-<h2>Revenons à notre exemple, installation de Wordpress</h2>
-<pre>
-<code data-trim>
+  <h2>Revenons à notre exemple, installation de Wordpress</h2>
+  <pre>
+    <code data-trim>
 #!/usr/bin/env bash
 
 ROOT_PASSWORD=toor
@@ -142,63 +149,64 @@ ROOT_PASSWORD=toor
 mysql -u root -p$ROOT_PASSWORD -e 'CREATE DATABASE $1;'
 mysql -u root -p$ROOT_PASSWORD -e 'GRANT ALL PRIVILEGES ON $1.* TO $2@'localhost' IDENTIFIED BY "$3";'
 mysql -u root -p$ROOT_PASSWORD -e 'FLUSH PRIVILEGES;'
-</code>
-</pre>
-
+    </code>
+  </pre>
 </section>
+
 <section>
   <section>
     <h2>Mais que se passe t'il si je rejoute le script avec les mêmes arguments ?</h2>
   </section>
   <section>
-    <pre><code>
+    <pre>
+    <code>
 ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
-</code></pre>
+    </code>
+    </pre>
   </section>
 </section>
 
 <section>
- <section>
-  <h2> Il faut donc, avant chaque opération, vérifier l'état actuel</h2>
-  <p> Par exemple dans notre cas :
-  <ol>
-   <li> Vérifiez si la base de données existe </li>
-   <li> Vérifiez si l'utilisateur existe </li>
-   <li> Vérifiez si l'utilisateur à bien les droits attendu </li>
-   <li> Et finalement, si 2 ou 3 est faux, exécuter <pre>FLUSH PRIVILEGES;</pre></li>
-  </ol>
- </section>
- <section>
-  <h2> Toutes ces garanties permettent d'obtenir ce que l'on appelle l'idempotence </h2>
-  <blockquote> Propriété d'une opération d'avoir le même effet que l'on applique une ou plusieurs fois (Wiktionary)</blockquote>
- </section>
- <section>
- <h3>Mais, dans le cas de scripts</h3>
- <ul>
-   <li> Cela est (très) fastidieux </li> 
-   <li> Demande énormement de tests </li>
-   <li> Difficile de prévoir tous les cas à l'avance </li>
- </ul>
- </section>
+  <section>
+    <h2> Il faut donc, avant chaque opération, vérifier l'état actuel</h2>
+    <p> Par exemple dans notre cas :
+    <ol>
+      <li> Vérifiez si la base de données existe </li>
+      <li> Vérifiez si l'utilisateur existe </li>
+      <li> Vérifiez si l'utilisateur à bien les droits attendu </li>
+      <li> Et finalement, si 2 ou 3 est faux, exécuter <pre>FLUSH PRIVILEGES;</pre></li>
+    </ol>
+  </section>
+  <section>
+    <h2> Toutes ces garanties permettent d'obtenir ce que l'on appelle l'idempotence </h2>
+    <blockquote> Propriété d'une opération d'avoir le même effet que l'on applique une ou plusieurs fois (Wiktionary)</blockquote>
+  </section>
+  <section>
+    <h3>Mais, dans le cas de scripts</h3>
+    <ul>
+      <li> Cela est (très) fastidieux </li> 
+      <li> Demande énormement de tests </li>
+      <li> Difficile de prévoir tous les cas à l'avance </li>
+    </ul>
+  </section>
 </section>
 
 <section>
- <section>
-
-<h2>C'est donc là que les outils de config mgt interviennent&nbsp;:</h2>
-<p>On ne décrit plus des actions, mais un état cible</p>
- </section>
- <section>
-<h2>Par exemple, avec ansible</h2>
-<pre class="fragment">
-<code>
-- name: Ensure Wordpress MySQL user
-  mysql_user: login_user=root login_password={{ mysql_root_password }} name=wordpress priv=wordpress.*:ALL state=present
-- name: Ensure Wordpress MySQL db
-  mysql_db: login_user=root login_password={{ mysql_root_password }} name=wordpress state=present
-</code>
-</pre>
- </section>
+  <section>
+    <h2>C'est donc là que les outils de config mgt interviennent&nbsp;:</h2>
+    <p>On ne décrit plus des actions, mais un état cible</p>
+  </section>
+  <section>
+    <h2>Par exemple, avec ansible</h2>
+    <pre class="fragment">
+      <code>
+      - name: Ensure Wordpress MySQL user
+      mysql_user: login_user=root login_password={{ mysql_root_password }} name=wordpress priv=wordpress.*:ALL state=present
+      - name: Ensure Wordpress MySQL db
+      mysql_db: login_user=root login_password={{ mysql_root_password }} name=wordpress state=present
+      </code>
+    </pre>
+  </section>
 </section>
 
 <section>
@@ -219,13 +227,21 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
     <p>
       Chef ops et puppet sont principalement en mode client/serveur
     </p>
+    <h3>Les inconveniants</h3>
+    <ul>
+      <li>Learning curve</li>
+      <li>Compléxité</li>
+    </ul>
+  </section>
 
+  <section>
     <h3>Les avantages d'Ansible</h3>
     <ul>
       <li>Learning curve</li>
       <li>Aucune installation nécessaire sur les serveurs</li>
       <li>Documentation simple et compléte</li>
       <li>Nombreux roles disponibles (ansible galaxy/github)</li>
+      <li>Configuration en YAML humainement comprehensible</li>
     </ul>
   </section>
 </section>
