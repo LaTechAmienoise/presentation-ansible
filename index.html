@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
 
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -106,14 +106,15 @@
 </section>
 
 <section>
-  <p>
+  <h3>
     Mais l'objectif d'un serveur est avant tout d'héberger des applications, 
-    qu'il faut donc installer et faire vivre !
-  </p>
+    qu'il faut donc installer et faire vivre&nbsp;!
+  </h3>
   <ul>
-    <li> Installation de l'application </li>
-    <li> Des éventuelles dépendances systèmes (par exemple mysql serveur) et la configuration associée</li>
-    <li> Configuration de l'application (au hasard identifiant pour accès à la base de données)</li>
+    <li class="fragment"> Installation de l'application </li>
+    <li class="fragment"> Des éventuelles dépendances systèmes (par exemple mysql serveur) et la configuration associée</li>
+    <li class="fragment"> Configuration de l'application (au hasard identifiant pour accès à la base de données)</li>
+    <li class="fragment"> Mettre à jour l'application!</li>
   </ul>
 </section>
 
@@ -122,23 +123,24 @@
 </Section>
 
 <section>
+  <h2>En pratique</h2>
+  <p>L'administrateur &nbsp;:</p>
+  <ul>
+    <li class="fragment">installe des paquets</li>
+    <li class="fragment">modifie et crée des fichiers</li>
+    <li class="fragment">exécute des commandes diverses et variées</li>
+  </ul>
+</section>
+
+<section>
   <h2> Comme un bon sysadmin est fainéant </h2>
   <img src="http://i.imgur.com/KO5ke.png" />
 </section>
 
 <section>
-  <h2>En pratique</h2>
-  <p>Les administrateurs écrivent des scripts qui&nbsp;:</p>
-  <ul>
-    <li>installe des paquets</li>
-    <li>modifie et crée des fichiers</li>
-    <li>exécute des commandes diverses et variées</li>
-  </ul>
-</section>
-
-<section>
   <h2>Revenons à notre exemple, installation de Wordpress</h2>
-  <pre>
+  <p>Script de création de la base de données</p>
+  <pre class="fragment">
     <code data-trim>
 #!/usr/bin/env bash
 
@@ -181,7 +183,7 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
   </section>
   <section>
     <h2> Toutes ces garanties permettent d'obtenir ce que l'on appelle l'idempotence </h2>
-    <blockquote> Propriété d'une opération d'avoir le même effet que l'on applique une ou plusieurs fois (Wiktionary)</blockquote>
+      <blockquote class="fragment"> Propriété d'une opération d'avoir le même effet que l'on applique une ou plusieurs fois (Wiktionary)</blockquote>
   </section>
   <section>
     <h3>Mais, dans le cas de scripts</h3>
@@ -195,8 +197,8 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
 
 <section>
   <section>
-    <h2>C'est donc là que les outils de config mgt interviennent&nbsp;:</h2>
-    <p>On ne décrit plus des actions, mais un état cible</p>
+    <h2>C'est donc là que les outils de config mgt interviennent</h2>
+    <p class="fragment">On ne décrit plus des actions, mais un état cible</p>
   </section>
   <section>
     <h2>Par exemple, avec ansible</h2>
@@ -231,7 +233,7 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
     </p>
     <h3>Les inconvénients</h3>
     <ul>
-      <li>Learning curve</li>
+      <li>Courbe d'apprentissage élevée</li>
       <li>Complexité</li>
     </ul>
   </section>
@@ -239,14 +241,81 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
   <section>
     <h3>Les avantages d'Ansible</h3>
     <ul>
-      <li>Learning curve</li>
-      <li>Aucune installation nécessaire sur les serveurs</li>
+      <li>Courbe d'apprentissage très faible</li>
+      <li>Aucune installation nécessaire sur les serveurs (hors python)</li>
       <li>Documentation simple et complète</li>
       <li>Modules disponibles (npm/bower/composer…)</li>
       <li>Nombreux rôles disponibles (ansible galaxy/github)</li>
       <li>Configuration en YAML humainement compréhensible</li>
     </ul>
   </section>
+</section>
+
+<section>
+  <h2>Démonstration</h2>
+  <ul>
+  <li class="fragment">Création d'une machine virtuelle AWS (Debian)</li>
+  <li class="fragment">Première connexion SSH</li>
+  <li class="fragment">Mise à jour de l'inventaire</li>
+  <li class="fragment">Let's go!</li>
+  </ul>
+</section>
+
+<section>
+  <section>
+    <h2>Comment utiliser ansible ?</h2>
+    <ul>
+      <li class="fragment">Un fichier d'inventaire</li>
+      <li class="fragment">Un ou plusieurs fichiers playbook</li>
+      <li class="fragment">Des rôles (pas obligatoire mais fortement recommandé)</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Un rôle, c'est quoi ?</h2>
+    <ul>
+      <li class="fragment">Une suite d'état attendu</li>
+      <li class="fragment">Des gabarits (templates)</li>
+      <li class="fragment">Des dépendances vers d'autres rôles</li>
+      <li class="fragment">Des variables par défaut</li>
+      <li class="fragment">Des handlers pour redémarrer les programmes impactés</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Ansible, comment ça marche ?</h2>
+    <ul>
+      <li class="fragment">Se connecte en SSH sur l'hôte</li>
+      <li class="fragment">Exécute un premier script (facts)</li>
+      <li class="fragment">Exécute le cas échéant les modules pour aboutir au résultat décrit</li>
+      <li class="fragment">Rédemarre via les handlers les services si besoin est</li>
+    </ul>
+  </section>  
+</section>
+
+<section>
+  <section>
+    <h1>Cas d'utilisation</h1>
+  </section>
+  <section>
+    <h2>Pour les développeurs</h2>
+    <ul>
+      <li>Déploiement continu en recette</li>
+    </ul>
+  </section>
+  <section>
+    <h2>En production</h2>
+    <ul>
+      <li>Configuration identique sur tous les serveurs</li>
+      <li>Gestion de la sauvegarde</li>
+      <li>Gestion du monitoring</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Analyze des fichiers pour la démo</h1>
 </section>
 
 <section>
@@ -281,7 +350,7 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
       <li>Évitez au maximum les taches en changed/skipped !</li>
       <li>Évitez l'utilisation du module `shell` et `command`</li>
       <li>Spécifiez la version/tag sur vos repos</li>
-      <li>Restez simple !</li>
+      <li>KISS ! (Restez simple !)</li>
     </ul>
   </section>
 </section>
@@ -290,12 +359,18 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
   <section>
     <h2>Merci !</h2>
     <h3>Des questions ?</h3>
-    <p>Les slides sont disponibles sur le github de la tech amienoise</p>
-    <p>
+    <p>Les slides et la démo sont disponible sur le github de la tech amienoise</p>
+    <ul>
+      <li>
       <a href="https://github.com/LaTechAmienoise/presentation-ansible">
-        https://github.com/LaTechAmienoise/presentation-ansible</a>
-      </a>
-    </p>
+        Les slides</a>
+      </a></li>
+      <li>
+      <a href="https://github.com/LaTechAmienoise/ansible-demo">
+        La démo</a>
+      </a></li>
+      </li>
+    </ul>
   </section>
 </section>
 
