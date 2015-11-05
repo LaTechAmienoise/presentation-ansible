@@ -205,9 +205,18 @@ ERROR 1007 (HY000) at line 1: Can't create database 'wordpress'; database exists
     <pre class="fragment">
       <code>
       - name: Ensure Wordpress MySQL user
-      mysql_user: login_user=root login_password={{ mysql_root_password }} name=wordpress priv=wordpress.*:ALL state=present
+        mysql_user: 
+          login_user=root 
+          login_password={{ mysql_root_password }} 
+          name=wordpress 
+          priv=wordpress.*:ALL 
+          state=present
       - name: Ensure Wordpress MySQL db
-      mysql_db: login_user=root login_password={{ mysql_root_password }} name=wordpress state=present
+        mysql_db: 
+          login_user=root 
+          login_password={{ mysql_root_password }}
+          name=wordpress 
+          state=present
       </code>
     </pre>
   </section>
